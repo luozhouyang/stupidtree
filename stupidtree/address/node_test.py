@@ -21,13 +21,13 @@ class TestNode(unittest.TestCase):
         self.assertNotEqual(n5, n6)
         n7 = AddressNode(data='浙江', level=Level.PROVINCE, parent=None)
         self.assertEqual(n3, n7)
-        self.assertEqual(n3.address(), n7.address())
-        self.assertEqual(n3.csv_address(), n7.csv_address())
+        self.assertEqual(n3.path_value(), n7.path_value())
+        self.assertEqual(n3.csv_path_value(), n7.csv_path_value())
         n8 = AddressNode(data=None, level=None, parent=None)
         n9 = AddressNode(data=None, level=None, parent=None)
         self.assertEqual(n8, n9)
-        self.assertEqual(n8.address(), n9.address())
-        self.assertEqual(n8.csv_address(), n9.csv_address())
+        self.assertEqual(n8.path_value(), n9.path_value())
+        self.assertEqual(n8.csv_path_value(), n9.csv_path_value())
 
 
 if __name__ == "__main__":

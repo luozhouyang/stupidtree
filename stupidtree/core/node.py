@@ -5,21 +5,21 @@ class Node(object):
         self.parent = parent
         self.children = list()
 
-    def address(self):
-        addr = self.data if self.data else ""
+    def path_value(self):
+        value = self.data if self.data else ""
         p = self.parent
         while p:
-            addr = addr + " " + p.name
+            value = value + " " + p.name
             p = p.parent
-        return addr.strip()
+        return value.strip()
 
-    def csv_address(self):
-        addr = self.data if self.data else ""
+    def csv_path_value(self):
+        value = self.data if self.data else ""
         p = self.parent
         while p:
-            addr = addr + "," + p.name
+            value = value + "," + p.name
             p = p.parent
-        return addr.strip()
+        return value.strip()
 
     def __hash__(self):
         return hash((self.data, self.tag, self.parent))
