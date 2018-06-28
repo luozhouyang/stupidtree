@@ -1,6 +1,6 @@
 import abc
 
-from stupidtree.address.node import AddressNode
+from stupidtree.core.node import Node
 
 
 class BaseTreeInterface(abc.ABC):
@@ -81,7 +81,7 @@ class BaseTree(BaseTreeInterface):
             return
         # child = AddressNode(words[depth], Level(depth + 2), node)
         child = self._create_node(node, words, depth)
-        assert isinstance(child, AddressNode)
+        assert isinstance(child, Node)
         for c in node.children:
             if c == child:
                 self._put(c, words, depth + 1)
