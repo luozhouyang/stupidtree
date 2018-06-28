@@ -1,6 +1,6 @@
 import abc
 
-from .node import AddressNode
+from stupidtree.address.node import AddressNode
 
 
 class BaseTreeInterface(abc.ABC):

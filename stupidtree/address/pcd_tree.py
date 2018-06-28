@@ -1,5 +1,5 @@
-from .indexed_tree import IndexedTree
-from .level import Level
+from stupidtree.core.indexed_tree import IndexedTree
+from stupidtree.address.level import Level
 import abc
 
 
@@ -21,6 +21,7 @@ class PCDInterface(abc.ABC):
         raise NotImplementedError()
 
 
+# TODO(luozhouyang) Refactor PCDTree
 class PCDTree(IndexedTree, PCDInterface):
 
     def __init__(self,
@@ -77,6 +78,12 @@ class PCDTree(IndexedTree, PCDInterface):
         else:
             raise ValueError(
                 "Unknown level %s in node %s" % (node.level, node.data))
+
+    def _create_root_node(self, words, depth):
+        pass
+
+    def _create_node(self, node, words, depth):
+        pass
 
     def provinces(self):
         return self.provinces
