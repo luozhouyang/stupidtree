@@ -33,32 +33,28 @@ class NodeIndexInterface(abc.ABC):
         raise NotImplementedError()
 
 
-class NodeIndexer(NodeIndexInterface):
+class NodeDictIndexer(NodeIndexInterface):
 
     def __init__(self):
         self._dict = dict()
 
-    def put(self, key, node, put_filter=None):
+    def put(self, key, node):
+        if not key:
+            raise ValueError("Argument key is NoneType.")
         if key in self._dict.keys():
-            if put_filter is None or put_filter(node):
-                self._dict[key].add(node)
+            self._dict[key].add(node)
             return
         self._dict[key] = set()
-        if put_filter is None or put_filter(node):
-            self._dict[key].add(node)
+        self._dict[key].add(node)
 
     def get(self, key):
         if key in self._dict.keys():
             return self._dict[key]
         return []
 
-    def remove(self, key, rm_filter=None):
-        if key not in self._dict.keys():
+    def remove(self, node):
+        key = node.data
+        if not key:
             return
-        nodes = set()
-        for n in self._dict[key]:
-            if rm_filter is None or rm_filter(n):
-                nodes.add(n)
-        for n in nodes:
-            self._dict[key].remove(n)
-        nodes.clear()
+        if key in self._dict.keys():
+            self._dict[key].remove(node)
