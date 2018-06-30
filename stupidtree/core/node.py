@@ -9,7 +9,7 @@ class Node(object):
         value = self.data if self.data else ""
         p = self.parent
         while p:
-            value = value + " " + p.name
+            value = value + " " + p.data
             p = p.parent
         return value.strip()
 
@@ -17,7 +17,7 @@ class Node(object):
         value = self.data if self.data else ""
         p = self.parent
         while p:
-            value = value + "," + p.name
+            value = value + "," + p.data
             p = p.parent
         return value.strip()
 
