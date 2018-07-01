@@ -1,13 +1,13 @@
 from .base_tree import BaseTree
-from .indexer import NodeIndexer
+from .indexer import NodeDictIndexer
 import abc
 
 
 class IndexedTree(BaseTree):
 
-    def __init__(self, ):
+    def __init__(self, indexer=NodeDictIndexer()):
         super().__init__()
-        self.indexer = NodeIndexer()
+        self.indexer = indexer
 
     def on_insert(self, node):
         self.nodes_count += 1
