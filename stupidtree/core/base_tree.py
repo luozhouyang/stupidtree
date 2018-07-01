@@ -75,6 +75,7 @@ class BaseTree(BaseTreeInterface):
     def _put(self, node, words, depth):
         if not node:
             node = self._create_root_node(words, depth)
+            self.root = node
             assert node
             self.on_insert(node)
         if depth == len(words):
