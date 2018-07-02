@@ -68,9 +68,10 @@ class BaseTree(BaseTreeInterface):
         if isinstance(words, list):
             self._put(self.root, words, 0)
         elif isinstance(words, str):
-            self._put(self.root, words.split(","), 0)
+            self._put(self.root, words.split(" "), 0)
         else:
-            raise TypeError("Argument `words` must be in str or list Type.")
+            raise TypeError("Argument `words` must be SPACE "
+                            "separated str or list Type.")
 
     def _put(self, node, words, depth):
         if not node:
