@@ -39,8 +39,8 @@ class NodeDictIndexer(NodeIndexInterface):
         self._dict = dict()
 
     def put(self, key, node):
-        if not key:
-            raise ValueError("Argument key is NoneType.")
+        # if not key:
+        #     raise ValueError("Argument key is NoneType.")
         if key in self._dict.keys():
             self._dict[key].add(node)
             return
