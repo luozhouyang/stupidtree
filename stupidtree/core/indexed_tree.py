@@ -10,15 +10,15 @@ class IndexedTree(BaseTree):
         self.indexer = indexer
 
     def on_insert(self, node):
-        self.nodes_count += 1
         self.indexer.put(node.data, node)
+        self.nodes_count += 1
 
     def get(self, key):
         return self.indexer.get(key)
 
     def on_remove(self, node):
-        self.nodes_count -= 1
         self.indexer.remove(node)
+        self.nodes_count -= 1
 
     @abc.abstractmethod
     def _create_root_node(self, words, depth):
