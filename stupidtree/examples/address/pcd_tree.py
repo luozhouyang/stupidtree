@@ -1,7 +1,7 @@
 from stupidtree.core.indexed_tree import IndexedTree
-from stupidtree.address.level import Level
+from stupidtree.examples.address.level import Level
 from stupidtree.core.indexer import NodeDictIndexer
-from stupidtree.address.node import AddressNode
+from stupidtree.examples.address.node import AddressNode
 import abc
 
 

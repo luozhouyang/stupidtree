@@ -1,7 +1,7 @@
 import unittest
 
-from stupidtree.address.pcd_tree import PCDTree
-from stupidtree.address.level import Level
+from stupidtree.examples.address.pcd_tree import PCDTree
+from stupidtree.examples.address.level import Level
 
 
 class TestPCDTree(unittest.TestCase):

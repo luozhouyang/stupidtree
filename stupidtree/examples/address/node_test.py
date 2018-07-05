@@ -1,6 +1,6 @@
 import unittest
 from .node import AddressNode
-from stupidtree.address.level import Level
+from stupidtree.examples.address.level import Level
 
 
 class TestNode(unittest.TestCase):
