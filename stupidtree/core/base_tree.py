@@ -88,6 +88,7 @@ class BaseTree(BaseTreeInterface):
             if c == child:
                 self._put(c, words, depth + 1)
                 return
+        child.parent = node
         node.children.append(child)
         self.on_insert(child)
         self._put(child, words, depth + 1)
@@ -127,25 +128,20 @@ class BaseTree(BaseTreeInterface):
         raise NotImplementedError()
 
     def remove(self, key, rm_filter=None):
-        if not key:
-            return
         nodes = self.get(key)
         if not nodes or len(nodes) == 0:
             return
-        for n in nodes:
-            if rm_filter is None or rm_filter(n):
+        for n in nodes.copy():
+            if not rm_filter or rm_filter(n):
                 self._remove(n)
 
     def _remove(self, n):
-        if not n:
-            return
-        for c in n.children:
+        for c in n.children.copy():
             self._remove(c)
+        self.on_remove(n)
         if n.parent:
             n.parent.children.remove(n)
-        self.on_remove(n)
         n.parent = None
-        n = None
 
     @abc.abstractmethod
     def on_remove(self, node):
@@ -158,3 +154,13 @@ class BaseTree(BaseTreeInterface):
 
     def size(self):
         return self.nodes_count
+
+    def print(self):
+        self._print(self.root, 0)
+
+    def _print(self, node, depth):
+        if depth == 0:
+            print("+--" + node.data)
+        for c in node.children:
+            print("|    " * (depth + 1) + "+--" + c.data)
+            self._print(c, depth + 1)
