@@ -5,11 +5,13 @@ A generic tree implementation in Python.
 ## Installation
 
 From pypi:
+
 ```bash
 pip install stupidtree
 ```
 
 or clone this repo:
+
 ```bash
 git clone https://github.com/luozhouyang/stupidtree
 ```
@@ -20,6 +22,7 @@ The design of this lib is flexible and expandable.
 
 The module `stupidtree.core` has already defines the `Node` class, which works for most situations.  
 Here is the `__init__` function's signature:
+
 ```python
 def __init__(data, tag, parent):
     pass
@@ -29,7 +32,11 @@ For your special needs, you can inherit the `Node` class and override some funct
 
 This module also defines the `BaseTree` class, which is the base class of all trees. It has already implemented the
 interface `BaseTreeInterface`. This interface(or abstract class) contains these useful methods:
+
 ```python
+import abc
+
+
 class BaseTreeInterface(abc.ABC):
 
     def put(self, words):
@@ -103,9 +110,11 @@ class TestPCDTree(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-``` 
+```  
+
 
 And here are the outputs:
+
 ```bash
 +--
 |    +--浙江省
@@ -135,6 +144,7 @@ And here are the outputs:
 ```  
 
 ## License  
+
 ```bash
 MIT License
 
